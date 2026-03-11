@@ -40,7 +40,7 @@ let llista = document.getElementById("llista-compra");
 
 botoAfegir.addEventListener("click", function() {
     let nouLi = document.createElement("li");
-    nouLi.textContent = "Cereals";
+    nouLi.textContent = "Farina";
     llista.appendChild(nouLi);
 });
 
