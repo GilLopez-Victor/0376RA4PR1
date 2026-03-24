@@ -1,65 +1,153 @@
+# RA3Ex7 — Activitats Ràpides DOM JS
+ 
+Documentació del script d'activitats ràpides de manipulació del **DOM** amb JavaScript.  
+Cada exercici treballa un concepte fonamental de la interacció entre JS i l'estructura HTML de la pàgina.
+ 
+ 
+## Exercicis
+ 
+### 1. Selecció
+ 
+> Usa `querySelector` per canviar el color d'un `<h1>` quan la pàgina carregui.
+ 
+```javascript
+let changeColor = document.querySelector("#titol-principal");
+changeColor.style.color = "blue";
+```
+ 
+- S'utilitza `document.querySelector("#titol-principal")` per seleccionar l'element `<h1>`.
+- Es modifica la propietat `.style.color` amb el valor `"blue"` en el moment de càrrega.
+ 
 
+ 
+### 2. Contingut
+ 
+> Fes que un paràgraf `<p>` mostri `"Hola Món"` usant `textContent`.
+ 
+```javascript
+let changeParagraf = document.querySelector("#paragraf-hola");
+changeParagraf.textContent = "Hola món";
+```
+ 
+- `textContent` permet escriure text pla dins d'un element, substituint qualsevol contingut previ.
+ 
 
-## 4. Aplica criteris de seguretat en l'accés dels usuaris
  
-> Aplica criteris de seguretat en l'accés dels usuaris
+### 3. Atributs
+ 
+> Canvia la `src` d'una imatge `<img>` usant `setAttribute`.
+ 
+```javascript
+let canviaImatge = document.getElementById("imatge-canviant");
+canviaImatge.setAttribute("src", "https://ethic.es/wp-content/uploads/2023/03/imagen.jpg");
+```
+ 
+- `getElementById()` selecciona l'element pel seu `id`.
+- `setAttribute("src", "url")` substitueix l'atribut `src` de la imatge per una nova URL.
+ 
 
-16. **Quins riscos pot tenir compartir un repositori amb massa permisos per a tots els usuaris?**
  
-    Si tots tenen permisos alts poden modificar configuracions critiques o esborrar contingut. Això augmenta el risc d'errors o problemes de seguretat.
+### 4. Estils
  
-17. **Per què és recomanable utilitzar autenticació segura (com tokens o SSH) per accedir a GitHub?**
+> Canvia el color de fons (`backgroundColor`) d'un element en fer-li clic.
  
-    Perque ofereix una capa extra de seguretat, ja que no depens només de contrasenyes. Els `tokens` es poden limitar i revocar facilment.
+```javascript
+let caixaEstil = document.getElementById("caixa-estil");
  
-18. **Què passaria si es publiquen contrasenyes o claus privades dins d'un repositori?**
+caixaEstil.addEventListener("click", function() {
+    caixaEstil.style.backgroundColor = "lightblue";
+});
+```
  
-    Podria comprometre serveis externs com bases de dades o `APIs`. A més hi ha sistemes automatics que detecten aquestes claus i les utilitzen.
+- L'esdeveniment `"click"` activa la funció que modifica `.style.backgroundColor`.
+- El canvi es produeix únicament quan l'usuari interactua amb l'element.
  
-19. **Quines bones pràctiques de seguretat s'han de seguir quan es treballa amb GitHub?**
- 
-    - No incloure dades sensibles al repositori.
-    - Utilitzar `.gitignore`.
-    - Activar autenticació en dos factors `2FA`.
-    - Controlar permisos.
-    - Revisar accessos regularment.
- 
-20. **Per què és important controlar qui pot fer **push** directament a la branca principal (`main`)?**
- 
-    Perque la branca `main` representa una versio estable del projecte. Si es fan canvis sense control pot provocar errors en producció.
- 
----
 
-## 5. Utilitza les aplicacions de forma cooperativa
+ 
+### 5. Classes
+ 
+> Crea un botó que afegeixi/tregui la classe `'actiu'` amb `classList.toggle`.
+ 
+```javascript
+let botoToggle = document.getElementById("boto-toggle");
+let textClasse = document.getElementById("text-classe");
+ 
+botoToggle.addEventListener("click", function() {
+    textClasse.classList.toggle("actiu");
+});
+```
+ 
+- `classList.toggle("actiu")` afegeix la classe si no existeix, i la treu si ja hi és.
+- Ideal per alternar estils CSS sense condicions addicionals.
+ 
 
-> Utilitza les aplicacions de forma cooperativa
  
-21. **Explica com poden treballar diverses persones al mateix projecte utilitzant GitHub.**
+### 6. Esdeveniments
  
-    Cada usuari clona el repositori i treballa en una branca local. Despres puja els canvis al repositori remot i crea una `pull request` per integrar-los. Això el que fa és treballar en paralel sense conflictes constants.
+> Afegeix un `addEventListener` a un botó perquè llanci una alerta (`alert`).
  
-22. **Per què és útil treballar amb branques en lloc de modificar directament la branca principal?**
+```javascript
+let botoAlerta = document.getElementById("boto-alerta");
  
-    Perque aïlla els canvis i evita afectar la versio estable. També el que fa és provar funcionalitats abans de integrar-les a `main`.
+botoAlerta.addEventListener("click", function() {
+    alert("Has fet clic al botó");
+});
+```
  
----
+- `addEventListener("click", fn)` associa una funció a l'esdeveniment de clic del botó.
+- `alert()` mostra un missatge emergent al navegador.
+ 
 
-## 6. Elabora documentació relativa a l'ús i la gestió de les aplicacions
+ 
+### 7. Estructura
+ 
+> Crea un nou `<li>` amb `createElement` i afegeix-lo a una `<ul>` amb `appendChild`.
+ 
+```javascript
+let botoAfegir = document.getElementById("boto-afegir");
+let llista = document.getElementById("llista-compra");
+ 
+botoAfegir.addEventListener("click", function() {
+    let nouLi = document.createElement("li");
+    nouLi.textContent = "Farina";
+    llista.appendChild(nouLi);
+});
+```
+ 
+- `createElement("li")` crea un nou node `<li>` en memòria.
+- `textContent` li assigna el text `"Farina"`.
+- `appendChild()` l'insereix com a últim fill de la `<ul>`.
+ 
 
-> Elabora documentació relativa a l'ús i la gestió de les aplicacions
+ 
+### 8. Eliminació
+ 
+> Fes que un element desaparegui en fer-li clic usant el mètode `remove()`.
+ 
+```javascript
+let eliminarElement = document.getElementById("element-eliminar");
+ 
+eliminarElement.addEventListener("click", function() {
+    eliminarElement.remove();
+});
+```
+ 
+- En fer clic sobre l'element, el mètode `remove()` l'elimina directament del DOM.
+ 
 
-23. **Per què és important incloure un fitxer **README.md** en un repositori de GitHub?**
  
-    Perque descriu el projecte, instalacio i us. És clau per que altres desenvolupadors entenguin el funcionament.
+## Mètodes i propietats utilitzats
  
-24. **Quins avantatges té utilitzar **Markdown** per escriure documentació a GitHub?**
- 
-    `Markdown` és lleuger i facil d'escriure, el que fa és formatar text sense complicacions. A més es compatible amb `Git` per veure canvis.
- 
-25. **Com pot ajudar la documentació a altres desenvolupadors que volen utilitzar o modificar el projecte?**
- 
-    Facilita entendre el codi, instalacio i estructura. Això el que fa és contribuir sense perdre temps investigant.
- 
----
- 
-*Documentació elaborada per Dong Yi i Víctor*
+| Mètode / Propietat | Descripció |
+|---|---|
+| `querySelector()` | Selecciona el primer element que coincideix amb un selector CSS |
+| `getElementById()` | Selecciona un element pel seu `id` |
+| `textContent` | Llegeix o escriu el contingut de text d'un element |
+| `setAttribute()` | Estableix o modifica un atribut HTML |
+| `style.color` | Canvia el color del text via JS |
+| `style.backgroundColor` | Canvia el color de fons via JS |
+| `classList.toggle()` | Afegeix o elimina una classe CSS alternativament |
+| `addEventListener()` | Escolta esdeveniments com ara `"click"` |
+| `createElement()` | Crea un nou element HTML |
+| `appendChild()` | Afegeix un element com a fill d'un altre |
+| `remove()` | Elimina un element del DOM |
